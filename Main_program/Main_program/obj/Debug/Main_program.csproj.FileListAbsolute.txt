@@ -8,3 +8,14 @@ E:\(1)3 курс\ПРАКТИКА\Program\Main_program\Main_program\obj\Debug\Ma
 E:\(1)3 курс\ПРАКТИКА\Program\Main_program\Main_program\obj\Debug\Main_program.csproj.CoreCompileInputs.cache
 E:\(1)3 курс\ПРАКТИКА\Program\Main_program\Main_program\obj\Debug\Main_program.exe
 E:\(1)3 курс\ПРАКТИКА\Program\Main_program\Main_program\obj\Debug\Main_program.pdb
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\bin\Debug\Main_program.exe.config
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\bin\Debug\Main_program.exe
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\bin\Debug\Main_program.pdb
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.csprojAssemblyReference.cache
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Form1.resources
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Properties.Resources.resources
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.csproj.GenerateResource.cache
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.csproj.CoreCompileInputs.cache
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.exe
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.pdb
+D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Form2.resources
