@@ -16,7 +16,7 @@ namespace Main_program
     {
         public List<Data> pretenders = new List<Data>();
         public List<string> file = new List<string>();
-        public string filename = "lastsave.txt";
+        public string filename1 = "lastsave.txt";
         public Form2 form2;
         public Form1()
         {
@@ -25,25 +25,20 @@ namespace Main_program
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-            filename = openFileDialog1.FileName;
-            textBox9.Clear();
-            using (StreamReader sr = new StreamReader(filename))
+            if (MessageBox.Show("Сохранить изменения перед выходом?", "Выход", MessageBoxButtons.YesNo) == DialogResult.No)
             {
-                string line;
-
-                while ((line = sr.ReadLine()) != null)
-                {
-                    file.Add(line);
-                }
+                e.Cancel = false;
             }
-            textBox9.Lines = file.ToArray();
+            else
+            {
+                File.WriteAllText(filename1, textBox9.Text);
+                e.Cancel = false;
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
@@ -55,34 +50,89 @@ namespace Main_program
             MessageBox.Show("Файл сохранен");
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void загрузитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BinaryFormatter BF = new BinaryFormatter();
-            using (FileStream fs = new FileStream("res.txt", FileMode.OpenOrCreate))
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            string filename = openFileDialog1.FileName;
+            textBox9.Clear();
+            file.Clear();
+            using (StreamReader sr = new StreamReader(filename))
             {
-                BF.Serialize(fs, pretenders);
-                MessageBox.Show($"Объект сериализован {Data.SerializationDate}");
+                while (!sr.EndOfStream)
+                {
+                    pretenders.Add(new Data(sr.ReadLine(), Convert.ToInt32(sr.ReadLine()), sr.ReadLine(), sr.ReadLine(), sr.ReadLine(),Convert.ToInt32(sr.ReadLine()), sr.ReadLine()));
+                }
             }
+            textBox9.Lines = File.ReadLines(openFileDialog1.FileName).ToArray();
+            file = textBox9.Lines.ToList();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void найтиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             file = textBox9.Lines.ToList();
             form2 = new Form2(this);
             form2.Show();
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void сериализацияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Сохранить изменения перед выходом?", "Выход", MessageBoxButtons.YesNo) == DialogResult.No)
+            try
             {
-                e.Cancel = false;
+                BinaryFormatter BF = new BinaryFormatter();
+                using (FileStream fs = new FileStream("res.txt", FileMode.OpenOrCreate))
+                {
+                    BF.Serialize(fs, pretenders);
+                    MessageBox.Show($"Объект сериализован {Data.SerializationDate}");
+                }
             }
-            else
+            catch when (pretenders.Count == 0)
             {
-                File.WriteAllText(filename, textBox9.Text);
-                e.Cancel = false;
+                MessageBox.Show("Нечего сериализовать");
             }
         }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Программа <<Помощник нанимателя>> выполнена в качестве задания на практику учащимся 3 курса группы 7к2492 Толкачёвым Дмитрием");
+        }
+
+        private void поФИОToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pretenders = pretenders.OrderBy(c => c.FIO).ToList();
+            textBox9.Text = string.Join(Environment.NewLine, pretenders);
+        }
+
+        private void поОбразованиюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pretenders = pretenders.OrderBy(c => c.education).ToList();
+            textBox9.Text = string.Join(Environment.NewLine, pretenders);
+        }
+
+        private void поГодуРожденияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pretenders = pretenders.OrderBy(c => c.year).ToList();
+            textBox9.Text = string.Join(Environment.NewLine, pretenders);
+        }
+
+        private void поИностранномуЯзыкуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pretenders = pretenders.OrderBy(c => c.language).ToList();
+            textBox9.Text = string.Join(Environment.NewLine, pretenders);
+        }
+
+        private void поУровнюЗнанияЯзыкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pretenders = pretenders.OrderBy(c => c.levelOfLanguage).ToList();
+            textBox9.Text = string.Join(Environment.NewLine, pretenders);
+        }
+
+        private void поУровнюВладенияКомпьютеромToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pretenders = pretenders.OrderBy(c => c.computerSkill).ToList();
+            textBox9.Text = string.Join(Environment.NewLine, pretenders);
+        }
+
+        
     }
 }

@@ -19,3 +19,14 @@ D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Ma
 D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.exe
 D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.pdb
 D:\(4)Codding\GitHubClones\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Form2.resources
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\bin\Debug\Main_program.exe.config
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\bin\Debug\Main_program.exe
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\bin\Debug\Main_program.pdb
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Form1.resources
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Form2.resources
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Properties.Resources.resources
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.csproj.GenerateResource.cache
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.csproj.CoreCompileInputs.cache
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.exe
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.pdb
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.csprojAssemblyReference.cache
