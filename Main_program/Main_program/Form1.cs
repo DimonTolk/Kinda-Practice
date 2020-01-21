@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Drawing.Printing;
 
 namespace Main_program
 {
@@ -16,7 +17,9 @@ namespace Main_program
     {
         public List<Data> pretenders = new List<Data>();
         public List<string> file = new List<string>();
+        Font printFont;
         public string filename1 = "lastsave.txt";
+        public string[] fileToPrint;
         public Form2 form2;
         public Form1()
         {
@@ -55,6 +58,7 @@ namespace Main_program
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = openFileDialog1.FileName;
+            pretenders.Clear();
             textBox9.Clear();
             file.Clear();
             using (StreamReader sr = new StreamReader(filename))
@@ -62,6 +66,7 @@ namespace Main_program
                 while (!sr.EndOfStream)
                 {
                     pretenders.Add(new Data(sr.ReadLine(), Convert.ToInt32(sr.ReadLine()), sr.ReadLine(), sr.ReadLine(), sr.ReadLine(),Convert.ToInt32(sr.ReadLine()), sr.ReadLine()));
+                    sr.ReadLine();
                 }
             }
             textBox9.Lines = File.ReadLines(openFileDialog1.FileName).ToArray();
@@ -133,6 +138,74 @@ namespace Main_program
             textBox9.Text = string.Join(Environment.NewLine, pretenders);
         }
 
-        
+        private void десериализацияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BinaryFormatter BF = new BinaryFormatter();
+            using (FileStream fs = new FileStream("res.txt", FileMode.OpenOrCreate))
+            {
+                List<Data> des = (List<Data>)BF.Deserialize(fs);
+                pretenders = des;
+                textBox9.Text = string.Join(Environment.NewLine, pretenders);
+                MessageBox.Show("Объекты десериализованы");
+            }
+        }
+
+        private void импортироватьЛистExcelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(openFileDialog2.ShowDialog() == DialogResult.Cancel)
+                return;
+            string filename = openFileDialog2.FileName;
+            Form3 f = new Form3(filename,this);
+            f.Show();
+            pretenders = f.pretenders;
+            textBox9.Text = string.Join(Environment.NewLine, pretenders);
+        }
+
+        private void справкаToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form4 f4 = new Form4();
+            f4.Show();
+        }
+
+
+
+        public void OnTextBoxChanged(List<Data> pret)
+        {
+            textBox9.Text = string.Join(Environment.NewLine, pret);
+        }
+
+        private void печатьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            fileToPrint = textBox9.Lines;
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += PrintPageHandler;
+
+            PrintDialog pdia = new PrintDialog();
+
+            pdia.Document = pd;
+            if (pdia.ShowDialog() == DialogResult.OK)
+            {
+                pdia.Document.Print();
+            }
+        }
+
+        void PrintPageHandler(object sender, PrintPageEventArgs ev)
+        {
+            float linesPerPage = 0;
+            float yPos = 0;
+            int count = 0;
+            float leftMargin = ev.MarginBounds.Left;
+            float topMargin = ev.MarginBounds.Top;
+            printFont = new Font("Arial",14);
+            linesPerPage = ev.MarginBounds.Height / printFont.GetHeight(ev.Graphics);
+            foreach (var item in fileToPrint)
+            {
+                yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
+                ev.Graphics.DrawString(item, printFont, Brushes.Black, leftMargin, yPos);
+                count++;
+            }
+        }
+       
     }
 }

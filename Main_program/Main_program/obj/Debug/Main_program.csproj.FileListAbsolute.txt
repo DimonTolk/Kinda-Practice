@@ -30,3 +30,6 @@ E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_p
 E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.exe
 E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.pdb
 E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.csprojAssemblyReference.cache
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.csproj.ResolveComReference.cache
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Form3.resources
+E:\(1)3 курс\ПРАКТИКА\Program_git\Kinda-Practice\Main_program\Main_program\obj\Debug\Main_program.Form4.resources
